@@ -1,0 +1,54 @@
+<h3>
+    Usuarios
+    <small>Listado de usuarios del sistema</small>
+</h3>
+<div class="container-fluid">
+    <!-- Sorting example-->
+    <!--<div class="panel panel-default">
+        <div class="panel-heading">
+            <button ng-click="vm.tableParams.sorting({})" class="pull-right btn btn-primary btn-sm">Clear sorting</button>
+            <div class="panel-title">Sorting</div>
+        </div>
+        <table ng-table="vm.tableParams" class="table table-bordered table-striped">
+            <tbody>
+                <tr ng-repeat="user in $data">
+                    <td data-title="'Name'" sortable="'name'">{{user.name}}</td>
+                    <td data-title="'Age'" sortable="'age'">{{user.age}}</td>
+                    <td data-title="'Money'" sortable="'money'">
+                        <span ng-class="{ 'plus': user.money &gt;= 0,'minus': user.money &lt; 0 }">{{user.money}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>-->
+    <!-- Ajax Example-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <!--<button ng-click="vm.tableParams.sorting({})" class="pull-right btn btn-primary btn-sm">Clear sorting</button>-->
+            <button type="button" class="btn btn-labeled btn-success pull-right" ng-click="vm.add()">
+                <span class="btn-label">
+                    <i class="fa fa-plus"></i>
+                </span>Agregar
+            </button>
+            <div class="panel-title">Usuarios</div>
+        </div>
+        <table ng-table="vm.tableParams5" class="table">
+            <tbody>
+                <tr ng-repeat="user in $data">
+                    <td data-title="'Id'" sortable="'Id'">{{user.Id}}</td>
+                    <td data-title="'Usuario'" sortable="'NombreDeUsuario'">{{user.NombreDeUsuario}}</td>
+                    <td data-title="'Nombre'" sortable="'Nombre'">{{user.Nombre}}</td>
+                    <td data-title="'Apellido'" sortable="'Apellido'">{{user.Apellido}}</td>
+                    <td width="10%">
+                        <button type="button" ng-click="vm.edit(user.Id)" class="btn btn-sm btn-warning">
+                            <em class="fa fa-edit"></em>
+                        </button>
+                        <button type="button" ng-click="vm.remove(user)" class="btn btn-sm btn-danger">
+                            <em class="fa fa-trash-o"></em>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
