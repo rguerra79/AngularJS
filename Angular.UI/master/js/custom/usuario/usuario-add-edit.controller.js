@@ -71,7 +71,7 @@
             vm.nombreUsuario = usuario.NombreDeUsuario;
             vm.nombre = usuario.Nombre;
             vm.apellido = usuario.Apellido;
-            vm.fechaNacimiento = new Date(usuario.FechaNacimiento);
+            vm.fechaNacimiento = new Date(parseInt(usuario.FechaNacimiento.substr(6)));
         }
     }
 })();
