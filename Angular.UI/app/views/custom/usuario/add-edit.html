@@ -1,39 +1,58 @@
-﻿<h3>
-    Usuario
+﻿<h3>Usuario
     <small>Agregue/modifique los datos del usuario</small>
 </h3>
 
 <!-- START row-->
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <!-- START panel-->
         <div class="panel panel-default">
             <div class="panel-heading">Usuario</div>
             <div class="panel-body">
                 <form role="form">
-                    <div class="form-group">
-                        <label>Usuario</label>
-                        <input type="text" placeholder="Ingrese el nombre de usuario" class="form-control" ng-model="vm.username" />
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Usuario</label>
+                                <input type="text" placeholder="Ingrese el nombre de usuario" class="form-control" ng-model="vm.nombreUsuario" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apellido</label>
+                                <input type="text" placeholder="Ingrese el apellido" class="form-control" ng-model="vm.apellido" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" placeholder="Ingrese el nombre" class="form-control" ng-model="vm.nombre" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="input-group">
+                                <input type="text" uib-datepicker-popup ng-model="vm.fechaNacimiento" is-open="vm.dpOpen" ng-required="true"
+                                    close-text="Cerrar" class="form-control" />
+                                <span class="input-group-btn">
+                                    <button type="button" ng-click="vm.dpOpen = !vm.dpOpen" class="btn btn-default">
+                                        <em class="fa fa-calendar"></em>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Apellido</label>
-                        <input type="text" placeholder="Ingrese el apellido" class="form-control" ng-model="vm.lastName" />
+                    <div class="row">
+                        <div class="col-sm-offset-8 col-sm-2">
+                            <button type="button" class="btn btn-block btn-success" ng-click="vm.save()">Guardar</button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-default btn-block" ng-click="vm.goBack()">Cancelar</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" placeholder="Ingrese el nombre" class="form-control" ng-model="vm.name" />
-                    </div>
-                    
-                    <button type="button" class="btn btn-labeled btn-success" ng-click="vm.save()">
-                        <span class="btn-label">
-                            <i class="fa fa-save"></i>
-                        </span>Guardar
-                    </button>
-                    <button type="button" class="btn btn-default pull-right" ng-click="vm.goBack()">Cancelar</button>
                 </form>
             </div>
         </div>
         <!-- END panel-->
     </div>
-    
+
 </div>

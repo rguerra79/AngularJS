@@ -112,13 +112,13 @@
     'use strict';
 
     angular
-        .module('app.forms', []);
+        .module('app.icons', []);
 })();
 (function() {
     'use strict';
 
     angular
-        .module('app.icons', []);
+        .module('app.forms', []);
 })();
 (function() {
     'use strict';
@@ -265,9 +265,13 @@
         .module('app.bootstrapui')
         .config(bootstrapuiConfig);
 
-    bootstrapuiConfig.$inject = ['$uibTooltipProvider'];
-    function bootstrapuiConfig($uibTooltipProvider){
-      $uibTooltipProvider.options({appendToBody: true});
+    bootstrapuiConfig.$inject = ['$uibTooltipProvider', 'uibDatepickerConfig', 'uibDatepickerPopupConfig'];
+    function bootstrapuiConfig($uibTooltipProvider, uibDatepickerConfig, uibDatepickerPopupConfig) {
+        $uibTooltipProvider.options({ appendToBody: true });
+
+        uibDatepickerConfig.showWeeks = false;
+        uibDatepickerPopupConfig.showButtonBar = false;
+        uibDatepickerPopupConfig.datepickerPopup = 'dd-MM-yyyy';
     }
 })();
 /**=========================================================
@@ -4549,6 +4553,39 @@
 
 })();
 
+/**=========================================================
+ * Module: skycons.js
+ * Include any animated weather icon from Skycons
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.icons')
+        .directive('skycon', skycon);
+
+    function skycon () {
+
+        var directive = {
+            link: link,
+            restrict: 'A'
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+          var skycons = new Skycons({'color': (attrs.color || 'white')});
+
+          element.html('<canvas width="' + attrs.width + '" height="' + attrs.height + '"></canvas>');
+
+          skycons.add(element.children()[0], attrs.skycon);
+
+          skycons.play();
+        }
+    }
+
+})();
+
 (function() {
     'use strict';
 
@@ -5536,39 +5573,6 @@
           var $elem = $(element);
           if($.fn.parsley)
             $elem.parsley();
-        }
-    }
-
-})();
-
-/**=========================================================
- * Module: skycons.js
- * Include any animated weather icon from Skycons
- =========================================================*/
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.icons')
-        .directive('skycon', skycon);
-
-    function skycon () {
-
-        var directive = {
-            link: link,
-            restrict: 'A'
-        };
-        return directive;
-
-        function link(scope, element, attrs) {
-          var skycons = new Skycons({'color': (attrs.color || 'white')});
-
-          element.html('<canvas width="' + attrs.width + '" height="' + attrs.height + '"></canvas>');
-
-          skycons.add(element.children()[0], attrs.skycon);
-
-          skycons.play();
         }
     }
 
@@ -9808,15 +9812,16 @@
         .module('angle')
         .controller('UsuarioAddEditController', UsuarioAddEditController);
 
-    UsuarioAddEditController.$inject = ['$state', '$stateParams', '$filter', 'ngTableParams', '$resource', '$timeout', 'ngTableDataService', 'UsuarioService', 'toaster'];
-    function UsuarioAddEditController($state, $stateParams, $filter, ngTableParams, $resource, $timeout, ngTableDataService, UsuarioService, toaster) {
+    UsuarioAddEditController.$inject = ['$state', '$stateParams', 'UsuarioService', 'toaster'];
+    function UsuarioAddEditController($state, $stateParams, UsuarioService, toaster) {
         var vm = this;
 
         //Variables
         vm.isAdd = true;
-        vm.username = '';
-        vm.name = '';
-        vm.lastName = '';
+        vm.nombreUsuario = '';
+        vm.nombre = '';
+        vm.apellido = '';
+        vm.fechaNacimiento = null;
 
         activate();
 
@@ -9845,9 +9850,10 @@
 
         function save() {
             var usuario = {
-                NombreDeUsuario: vm.username,
-                Nombre: vm.name,
-                Apellido:vm.lastName
+                NombreDeUsuario: vm.nombreUsuario,
+                Nombre: vm.nombre,
+                Apellido: vm.apellido,
+                FechaNacimiento: vm.fechaNacimiento
             };
 
             if (vm.isAdd) {
@@ -9869,9 +9875,10 @@
 
         //Functions
         function fillForm(usuario) {
-            vm.username = usuario.NombreDeUsuario;
-            vm.name = usuario.Nombre;
-            vm.lastName = usuario.Apellido;
+            vm.nombreUsuario = usuario.NombreDeUsuario;
+            vm.nombre = usuario.Nombre;
+            vm.apellido = usuario.Apellido;
+            vm.fechaNacimiento = new Date(usuario.FechaNacimiento);
         }
     }
 })();

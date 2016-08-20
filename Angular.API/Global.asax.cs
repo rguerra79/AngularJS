@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -21,6 +20,13 @@ namespace Angular.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Create Json.Net formatter serializing DateTime using the ISO 8601 format
+            //JsonSerializerSettings serializerSettings = new JsonSerializerSettings();
+            //serializerSettings.Converters.Add(new IsoDateTimeConverter());
+            //GlobalConfiguration.Configuration.Formatters[0] = new JsonNetFormatter();
+
+            //WebApiConfig.Configure(GlobalConfiguration.Configuration);
         }
 
         protected void Application_OnBeginRequest()

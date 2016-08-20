@@ -5,8 +5,12 @@
         .module('app.bootstrapui')
         .config(bootstrapuiConfig);
 
-    bootstrapuiConfig.$inject = ['$uibTooltipProvider'];
-    function bootstrapuiConfig($uibTooltipProvider){
-      $uibTooltipProvider.options({appendToBody: true});
+    bootstrapuiConfig.$inject = ['$uibTooltipProvider', 'uibDatepickerConfig', 'uibDatepickerPopupConfig'];
+    function bootstrapuiConfig($uibTooltipProvider, uibDatepickerConfig, uibDatepickerPopupConfig) {
+        $uibTooltipProvider.options({ appendToBody: true });
+
+        uibDatepickerConfig.showWeeks = false;
+        uibDatepickerPopupConfig.showButtonBar = false;
+        uibDatepickerPopupConfig.datepickerPopup = 'dd-MM-yyyy';
     }
 })();

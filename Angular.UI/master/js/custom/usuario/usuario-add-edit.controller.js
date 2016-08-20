@@ -5,15 +5,16 @@
         .module('angle')
         .controller('UsuarioAddEditController', UsuarioAddEditController);
 
-    UsuarioAddEditController.$inject = ['$state', '$stateParams', '$filter', 'ngTableParams', '$resource', '$timeout', 'ngTableDataService', 'UsuarioService', 'toaster'];
-    function UsuarioAddEditController($state, $stateParams, $filter, ngTableParams, $resource, $timeout, ngTableDataService, UsuarioService, toaster) {
+    UsuarioAddEditController.$inject = ['$state', '$stateParams', 'UsuarioService', 'toaster'];
+    function UsuarioAddEditController($state, $stateParams, UsuarioService, toaster) {
         var vm = this;
 
         //Variables
         vm.isAdd = true;
-        vm.username = '';
-        vm.name = '';
-        vm.lastName = '';
+        vm.nombreUsuario = '';
+        vm.nombre = '';
+        vm.apellido = '';
+        vm.fechaNacimiento = null;
 
         activate();
 
@@ -42,9 +43,10 @@
 
         function save() {
             var usuario = {
-                NombreDeUsuario: vm.username,
-                Nombre: vm.name,
-                Apellido:vm.lastName
+                NombreDeUsuario: vm.nombreUsuario,
+                Nombre: vm.nombre,
+                Apellido: vm.apellido,
+                FechaNacimiento: vm.fechaNacimiento
             };
 
             if (vm.isAdd) {
@@ -66,9 +68,10 @@
 
         //Functions
         function fillForm(usuario) {
-            vm.username = usuario.NombreDeUsuario;
-            vm.name = usuario.Nombre;
-            vm.lastName = usuario.Apellido;
+            vm.nombreUsuario = usuario.NombreDeUsuario;
+            vm.nombre = usuario.Nombre;
+            vm.apellido = usuario.Apellido;
+            vm.fechaNacimiento = new Date(usuario.FechaNacimiento);
         }
     }
 })();

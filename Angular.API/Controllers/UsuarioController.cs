@@ -14,18 +14,18 @@ namespace Angular.API.Controllers
         //Esto debería venir desde el servidor.
         private static List<Usuario> listaUsuarios = new List<Usuario>()
         {
-            new Usuario { Id=1, Apellido="Lopez", Nombre="Juan", NombreDeUsuario="jlopez" },
-            new Usuario { Id=2, Apellido="Perez", Nombre="Carlos", NombreDeUsuario="cperez" },
-            new Usuario { Id=3, Apellido="Gutierrez", Nombre="Camila", NombreDeUsuario="cgutierrez" },
-            new Usuario { Id=4, Apellido="Damilo", Nombre="Lucia", NombreDeUsuario="ldamilo" },
-            new Usuario { Id=5, Apellido="Vallejos", Nombre="Diego", NombreDeUsuario="dvallejos" },
-            new Usuario { Id=6, Apellido="Guerra", Nombre="Fernando", NombreDeUsuario="fguerra" },
-            new Usuario { Id=7, Apellido="Hernandez", Nombre="Romina", NombreDeUsuario="rhernandez" },
-            new Usuario { Id=8, Apellido="Castro", Nombre="Matias", NombreDeUsuario="mcastro" },
-            new Usuario { Id=9, Apellido="Del Potro", Nombre="Ignacio", NombreDeUsuario="idelpo" },
-            new Usuario { Id=10, Apellido="Messi", Nombre="Gabriel", NombreDeUsuario="gmessi" },
-            new Usuario { Id=11, Apellido="Phelps", Nombre="Rodrigo", NombreDeUsuario="rphelps" },
-            new Usuario { Id=12, Apellido="Tomada", Nombre="Franco", NombreDeUsuario="ftomada" },
+            new Usuario { Id=1, Apellido="Lopez", Nombre="Juan", NombreDeUsuario="jlopez", FechaNacimiento=new DateTime(1980, 3,25) },
+            new Usuario { Id=2, Apellido="Perez", Nombre="Carlos", NombreDeUsuario="cperez", FechaNacimiento=new DateTime(1980, 3,25) },
+            new Usuario { Id=3, Apellido="Gutierrez", Nombre="Camila", NombreDeUsuario="cgutierrez" , FechaNacimiento=new DateTime(1980, 3,25)},
+            new Usuario { Id=4, Apellido="Damilo", Nombre="Lucia", NombreDeUsuario="ldamilo" , FechaNacimiento=new DateTime(1980, 3,25)},
+            new Usuario { Id=5, Apellido="Vallejos", Nombre="Diego", NombreDeUsuario="dvallejos" , FechaNacimiento=new DateTime(1980, 3,25)},
+            new Usuario { Id=6, Apellido="Guerra", Nombre="Fernando", NombreDeUsuario="fguerra" , FechaNacimiento=new DateTime(1980, 3,25)},
+            new Usuario { Id=7, Apellido="Hernandez", Nombre="Romina", NombreDeUsuario="rhernandez" , FechaNacimiento=new DateTime(1980, 3,25)},
+            new Usuario { Id=8, Apellido="Castro", Nombre="Matias", NombreDeUsuario="mcastro" , FechaNacimiento=new DateTime(1980, 3,25)},
+            new Usuario { Id=9, Apellido="Del Potro", Nombre="Ignacio", NombreDeUsuario="idelpo" , FechaNacimiento=new DateTime(1980, 3,25)},
+            new Usuario { Id=10, Apellido="Messi", Nombre="Gabriel", NombreDeUsuario="gmessi", FechaNacimiento=new DateTime(1980, 3,25) },
+            new Usuario { Id=11, Apellido="Phelps", Nombre="Rodrigo", NombreDeUsuario="rphelps" , FechaNacimiento=new DateTime(1980, 3,25)},
+            new Usuario { Id=12, Apellido="Tomada", Nombre="Franco", NombreDeUsuario="ftomada" , FechaNacimiento=new DateTime(1980, 3,25)},
         };
 
         [System.Web.Http.HttpGet]
